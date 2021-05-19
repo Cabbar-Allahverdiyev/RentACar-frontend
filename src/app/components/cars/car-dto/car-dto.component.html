@@ -1,0 +1,107 @@
+<div class="card rounded-0">
+    <div class="card-header text-center rounded-0">
+      <div class="card-body">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let image of images" [class]="getCurrentSlideClass(image)">
+          <img src="{{ baseUrl }}/{{ image.imagePath }}" class="d-block w-100" alt="..." style="width: auto; height: auto;">
+        </div>
+        <div *ngIf="images.length == 0" [class]="getCurrentSlideClass(null)">
+          <img [src]="apiUrl+'Default.jpg'"  class="d-block w-100" alt="..." style="width: auto; height: 300;">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div> 
+    <!-- <div style="text-align:center"  aria-current="true" *ngIf="getdetail"><h4>
+      {{cardetail.brandName}} - {{cardetail.fuelName}}, {{cardetail.gearName}}
+  </h4></div> -->
+  
+    <table *ngIf="dataLoaded == true" class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>      
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Marka</th>
+          <td>{{cardetail.brandName}}</td>        
+        </tr>
+        <tr>
+          <th scope="row">Model</th>
+          <td>{{cardetail.modelName}}</td>        
+        </tr>
+        <tr>
+          <th scope="row">Buraxılış ili</th>
+          <td>{{cardetail.modelYear}}</td>        
+        </tr>
+        <tr>
+          <th scope="row">Rəng</th>
+          <td>{{cardetail.colorName}}</td>        
+        </tr>
+        <tr>
+          <th scope="row">Günlük qiymət</th>
+          <td>{{cardetail.dailyPrice}}</td>        
+        </tr>
+      </tbody>
+    </table>
+    <!-- <div *ngIf="dataLoaded == true" class="d-grid gap-2 d-md-flex justify-content-md-end">    
+      <button routerLink="/rental/{{ cardetail.carId}}" class="btn btn-success" type="button">Kirala</button>
+    </div> -->
+  </div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="card-mt2" *ngFor="let car of cars"><br>
+    <h3 class="card-header" style="text-align: center;">{{car.brandName}}</h3>
+</div>
+<div *ngFor="let image of images "><br>
+    <img src="{{imageBasePath}}{{image.imagePath}}" class="d-block w-100" height="600px">
+</div>
+<div class="card mt-2" *ngFor="let car of cars">
+    <h3 class="card-header" style="text-align: center;">Detaylar</h3>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4 class="card-title" style="text-align: center;">Model</h4>
+                <p class="card-text"  style="text-align: center;" >{{car.modelName}}</p>
+                <h4 class="card-title" style="text-align: center;">Model Yılı</h4>
+                <p class="card-text" style="text-align: center;">{{car.modelYear}}</p>
+            </div>
+            <div class="col-sm-6">
+                <h4 class="card-title " style="text-align: center;">Günlük Fiyat</h4>
+                <p class="card-text"  style="text-align: center;" >{{car.dailyPrice | currency:"₺"}} </p>
+               
+            </div>
+            
+            
+        </div>
+    </div>  
+</div>
+
+<div class="d-grid gap-2">
+    <button class="btn btn-dark" type="button">Aracı Kirala</button>
+</div> -->

@@ -1,0 +1,59 @@
+<div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<div>
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Avtomobil axtar</label>
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="Axtar"
+    />
+  </div>
+  <select   
+
+aria-label="Select a brand"
+name="Brands" id="brandFilterText" >
+  <option value="" selected>Marka secin</option>
+  <option *ngFor="let brand of brands" [value]="brand.brandName">{{brand.brandName}}</option>
+</select>
+</div>
+
+
+
+<div *ngIf="dataLoaded == true" class="container">
+  <div class="row align-items-start">
+    <div
+      *ngFor="let car of cars | filterBrand:filterText "
+      class="card"
+      style="width: 18rem"
+      class="row"
+    >
+      <img  src="{{ imageUrl }}/{{ car.imagePath }}" class="card-img-top align-self-center" alt="..." 
+        style="max-height: 100%; max-width: 100%; object-fit: cover" />
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ car.brandName | titlecase }}{{ car.modelName | titlecase }}
+        </h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ car.colorName | titlecase }}</li>
+        <li class="list-group-item">{{ car.modelYear }}</li>
+        <li class="list-group-item">
+          {{ car.dailyPrice | currency: "AZN":"₼":".2-2" }}
+        </li>
+      </ul>
+      <div class="card-body">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button  type="button" class="btn btn-primary">İcarəyə götür</button>
+          <button routerLink="/cars/getdetail/{{ car.carId }}" type="button" class="btn btn-primary">Ətraflı </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <img src="~/Images/Default.jpg" class="img" alt="Default Car image" /> -->

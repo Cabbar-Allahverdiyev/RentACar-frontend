@@ -1,24 +1,25 @@
-<ul  class="list-group">
-    <li class="list-group-item">
-      <table>
-        <thead> 
-          <tr>
-            <th>Id</th>
-            <th>Marka</th>
-          </tr>
-        </thead>
-        <tr  *ngFor="let brand of brands">
-          <td>{{brand.brandId}}</td>
-          <td>{{brand.brandName}}</td>
-        </tr>
-      </table>
-    </li>
-    <li class="list-group-item"></li>
+<ul class="list-group">
+  <li
+    [class]="getAllBrandClass()"
+    (click)="removeCurrentBrand()"
+    routerLink="/cars"
+  >
+    Bütün avtomobillər
+  </li>
+  <li
+    (click)="setCurrentBrand(brand)"
+    routerLink="/cars/brand/{{ brand.brandId }}"
+    *ngFor="let brand of brands"
+    [class]="getCurrentBrandClass(brand)"
+  >
+    {{ brand.brandName }}
+    
+    
+  </li>
+ 
+</ul>
 
-   
-  </ul>
-
-  <!-- <table>
+<!-- <table>
     <thead> 
       <tr>
         <th>Id</th>
@@ -29,4 +30,11 @@
       <td>{{brand.brandId}}</td>
       <td>{{brand.brandName}}</td>
     </tr>
-  </table> -->
+  </table>  
+
+<picture>
+    <source media="(min-width: )" srcset="">
+    <img src="" alt="">
+  </picture>
+
+-->
